@@ -14,9 +14,12 @@ public class Fire : MonoBehaviour
 
     public void Diminish()
     {
-        life = Mathf.Max(0, life - playerInRange.waterForce * Time.deltaTime);
-        if (Dead)
-            Destroy(gameObject);
+        if (playerInRange)
+        {
+            life = Mathf.Max(0, life - playerInRange.waterForce * Time.deltaTime);
+            if (Dead)
+                Destroy(gameObject);
+        }
     }
 
     public bool Dead
@@ -49,6 +52,13 @@ public class Fire : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        playerInRange = c.GetComponent<HelicopterWater>();
+        if(c.CompareTag("player"))
+            playerInRange = c.GetComponent<HelicopterWater>();
+    }
+
+    void OnTriggerExit(Collider c)
+    {
+        if (c.CompareTag("player"))
+            playerInRange = null;
     }
 }
