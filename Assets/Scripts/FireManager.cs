@@ -5,6 +5,10 @@ public class FireManager : MonoBehaviour
 {
     public List<Fire> fires;
 
+    void Start(){
+        fires = new List<Fire>(GetComponentsInChildren<Fire>());
+    }
+
     public void OnWaterDropped()
     {
         for (int i = 0; i < fires.Count; i++)

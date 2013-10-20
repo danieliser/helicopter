@@ -15,7 +15,7 @@ public class HelicopterWater : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && current > 0)
             DropWater();
         if (Input.GetKeyDown(KeyCode.Space))
             StartWater();
