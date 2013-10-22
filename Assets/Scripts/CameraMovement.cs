@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour{
 
+	public float screenPctg;
 	public float maxAngle = 30f;
 	public Transform other;
 
@@ -20,8 +21,8 @@ public class CameraMovement : MonoBehaviour{
 
 	public void Update(){
 		Vector3 mouseCurr = Input.mousePosition;
-		float deltaY = mouseCurr.y - Screen.height / 2f;
-		float pctg = deltaY / (Screen.height / 2f);
+		float deltaY = Screen.height * screenPctg - mouseCurr.y;
+		float pctg = deltaY / (Screen.height * screenPctg);
 
 		pctg = Mathf.Clamp01(pctg);
 
